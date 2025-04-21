@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Mahmoud Ali @ Google</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #ffffff;
+    }
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body class="flex items-center justify-center h-screen">
+
+  <div class="text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      Hi, I'm <span class="text-purple-500">Mahmoud Ali</span>
+      
+    </h1>
+    <h2 class="text-2xl md:text-3xl typing mb-6" id="typingText"></h2>
+    
+    <p class="text-gray-400 mb-8">Currently building cool stuff @ Google ☁️</p>
+
+    <div class="space-x-4">
+      <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-2xl transition duration-300">Contact Me</a>
+      <a href="https://github.com/mahmoudaligh" target="_blank" class="text-gray-300 hover:text-purple-400">GitHub</a>
+      <a href="https://www.linkedin.com/in/mahmoud-ali-6887722b8/" target="_blank" class="text-gray-300 hover:text-purple-400">LinkedIn</a>
+      <a href="https://www.youtube.com/@JavaWithHooda" target="_blank" class="text-gray-300 hover:text-purple-400">Youtube</a>
+
+    </div>
+  </div>
+
+  <script>
+    const text = ["Software Engineer", "Spring Boot", "Java Instractor", "Cloud Enthusiast"];
+    let index = 0;
+    let charIndex = 0;
+    const typingText = document.getElementById('typingText');
+
+    function type() {
+      if (charIndex < text[index].length) {
+        typingText.textContent += text[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typingText.textContent = text[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else {
+        index = (index + 1) % text.length;
+        setTimeout(type, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  
+</body>
+</html>
